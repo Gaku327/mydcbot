@@ -55,22 +55,4 @@ client.on('messageCreate', async message => {
     }
 });
 
-// function getCurrentlyPlayingSong() {
-//     const titleElement = document.querySelector('.title.ytmusic-player-bar');
-//     const artistElement = document.querySelector('.byline.ytmusic-player-bar');
-
-//     if (titleElement && artistElement) {
-//         const songTitle = titleElement.textContent;
-//         const songArtist = artistElement.textContent;
-//         console.log(`正在播放的歌曲: ${songTitle} - ${songArtist}`);
-//         return {
-//             title: songTitle,
-//             artist: songArtist
-//         };
-//     } else {
-//         console.log('無法擷取歌曲資訊');
-//         return null;
-//     }
-// }
-
 client.login(process.env.TOKEN);
