@@ -13,8 +13,8 @@ client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}`);
 });
 
-const prefixs_IU = ['IU ', 'iu ', 'Iu ', 'iU ','Jieun ','jieun ','JiEun ','JIEUN '];
-const prefixs_LALISA = ['Lalisa ','LALISA ','lalisa ','lisa ','LISA '];
+const prefixs_IU = ['IU', 'iu', 'Iu', 'iU','Jieun','jieun','JiEun','JIEUN'];
+const prefixs_LALISA = ['Lalisa','LALISA','lalisa','lisa','LISA'];
 
 client.on('messageCreate', async message => {
     //console.log(message.content);
@@ -37,15 +37,15 @@ client.on('messageCreate', async message => {
         });
         return;
     } 
-
-    if(prefixs_IU.some(prefix => message.content.includes(prefix))){ 
+    cnt=0;
+    if(prefixs_IU.some(prefix => message.content.startsWith(prefix))){ 
         const embed = new EmbedBuilder()
             .setTitle('你是不是想我了?')
             .setImage('https://media1.tenor.com/m/x3FSBkupfD8AAAAd/iu-beautiful.gif')
         await message.reply({embeds: [embed]});
+        cnt++;
         return;
     }
-
     if(prefixs_LALISA.some(prefix => message.content.includes(prefix))){
         const embed = new EmbedBuilder()
             .setTitle('我也很想你Muah')
@@ -53,6 +53,7 @@ client.on('messageCreate', async message => {
         await message.reply({embeds: [embed]});
         return;
     }
+    console.log(cnt);
 });
 
 client.login(process.env.TOKEN);
