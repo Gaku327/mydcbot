@@ -38,7 +38,7 @@ client.on('messageCreate', async message => {
         return;
     } 
 
-    if(prefixs_IU.some(prefix => message.content.startsWith(prefix))){ 
+    if(prefixs_IU.some(prefix => message.content.includes(prefix))){ 
         const embed = new EmbedBuilder()
             .setTitle('你是不是想我了?')
             .setImage('https://media1.tenor.com/m/x3FSBkupfD8AAAAd/iu-beautiful.gif')
@@ -46,7 +46,7 @@ client.on('messageCreate', async message => {
         return;
     }
 
-    if(prefixs_LALISA.some(prefix => message.content.startsWith(prefix))){
+    if(prefixs_LALISA.some(prefix => message.content.includes(prefix))){
         const embed = new EmbedBuilder()
             .setTitle('我也很想你Muah')
             .setImage('https://media1.tenor.com/m/bSDqtL945XUAAAAC/blackpink-lisa-lisa-blackpink.gif')
