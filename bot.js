@@ -1,6 +1,6 @@
 const { Client,IntentsBitField, EmbedBuilder,GatewayIntentBits,ActivityType} = require('discord.js');
 require('dotenv').config();
-
+const randomPhotos = require('./randomPhotos');
 const client = new Client({ 
     intents: [
         IntentsBitField.Flags.Guilds,
@@ -41,7 +41,7 @@ client.on('messageCreate', async message => {
     if(prefixs_IU.some(prefix => message.content.startsWith(prefix))){ 
         const embed = new EmbedBuilder()
             .setTitle('你是不是想我了?')
-            .setImage('https://media1.tenor.com/m/x3FSBkupfD8AAAAd/iu-beautiful.gif')
+            .setImage(randomPhotos.getGif())
         await message.reply({embeds: [embed]});
         cnt++;
         return;
