@@ -8,15 +8,14 @@ const API_KEY = process.env.TENOR_API_KEY;
 const url = "https://tenor.googleapis.com/v2/search";
 
 // 1. 這就是我們要匯出的「工具」
-async function getGif() {
-    const query = "iu cute";
+async function getGif(input) {
+    const query = input || "IU cute"; // 預設搜尋關鍵字
     const params = {
         'key': API_KEY,
         'q': query,
-        'limit': 4
+        'limit': 20
     };
     
-    console.log(`(模組): 正在搜尋 '${query}' 的 GIF...`);
     try {
         const response = await axios.get(url, { params: params });
         const data = response.data;
@@ -25,8 +24,6 @@ async function getGif() {
             const randomIndex = Math.floor(Math.random() * data.results.length);
             const randomResult = data.results[randomIndex];
             const gifUrl = randomResult.media_formats.gif.url;
-            
-            console.log("(模組): 🎉 成功找到了！");
             
             // 2. 【重要】回傳 URL，而不是只 console.log
             return gifUrl; 
@@ -45,6 +42,5 @@ async function getGif() {
 module.exports = {
     getGif: getGif
 };
-
 // 4. 【重要】刪除這裡的 getGif() 呼叫！
 //    (拿掉這一行)

@@ -13,47 +13,31 @@ client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}`);
 });
 
-const prefixs_IU = ['IU', 'iu', 'Iu', 'iU','Jieun','jieun','JiEun','JIEUN'];
+const prefixs_IU = ['IU', 'iu', 'Iu', 'iU','Jieun','jieun','JiEun','JIEUN','知恩','老婆'];
+const prefix_yuri = ['yuri','YURI','Yuri','柔理','joyuri','Joyuri','JOYURI'];
+const prefix_chaewon = ['chaewon','Chaewon','CHAEWON','采源','金小豹'];
 const prefixs_LALISA = ['Lalisa','LALISA','lalisa','lisa','LISA'];
 
 client.on('messageCreate', async message => {
     //console.log(message.content);
     if(message.author.bot) return;
 
-    if (prefixs_IU.some(prefix => message.content.startsWith(prefix + "do"))) {
-
-        // 取得自訂狀態的內容（移除前綴）
-        const statusMessage = message.content.slice(prefixs_IU[0].length + 2).trim();
-
-        // 設定自訂狀態
-        client.user.setPresence({
-            status: 'online', // 設定狀態為 online
-            activities: [
-                {
-                    name: statusMessage, // 設定活動名稱
-                    type: ActivityType.Listening // 活動類型
-                }
-            ]
-        });
+    if(prefixs_IU.some(prefix => message.content.includes(prefix))){ 
+        await message.reply(await randomPhotos.getGif('iu cute funny'));
         return;
-    } 
-    cnt=0;
-    if(prefixs_IU.some(prefix => message.content.startsWith(prefix))){ 
-        const embed = new EmbedBuilder()
-            .setTitle('你是不是想我了?')
-            .setImage(randomPhotos.getGif())
-        await message.reply({embeds: [embed]});
-        cnt++;
+    }
+    if(prefix_yuri.some(prefix => message.content.includes(prefix))){
+        await message.reply(await randomPhotos.getGif('joyuri cute funny'));
+        return;
+    }
+    if(prefix_chaewon.some(prefix => message.content.includes(prefix))){
+        await message.reply(await randomPhotos.getGif('chaewon cute funny'));
         return;
     }
     if(prefixs_LALISA.some(prefix => message.content.includes(prefix))){
-        const embed = new EmbedBuilder()
-            .setTitle('我也很想你Muah')
-            .setImage('https://media1.tenor.com/m/bSDqtL945XUAAAAC/blackpink-lisa-lisa-blackpink.gif')
-        await message.reply({embeds: [embed]});
+        await message.reply(await randomPhotos.getGif('lalisa cute funny'));
         return;
     }
-    console.log(cnt);
 });
 
 client.login(process.env.TOKEN);
