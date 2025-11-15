@@ -1,6 +1,6 @@
 const { Client,IntentsBitField, EmbedBuilder,GatewayIntentBits,ActivityType} = require('discord.js');
 require('dotenv').config();
-const randomPhotos = require('./randomPhotos');
+const randomPhotos = require('./randomPhoto');
 const client = new Client({ 
     intents: [
         IntentsBitField.Flags.Guilds,
