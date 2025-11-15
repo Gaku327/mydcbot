@@ -16,6 +16,7 @@ client.on('ready', () => {
 const prefixs_IU = ['IU', 'iu', 'Iu', 'iU','Jieun','jieun','JiEun','JIEUN','知恩','老婆'];
 const prefix_yuri = ['yuri','YURI','Yuri','柔理','joyuri','Joyuri','JOYURI'];
 const prefix_chaewon = ['chaewon','Chaewon','CHAEWON','采源','金小豹'];
+const prefix_yunjin = ['yunjin','Yunjin','YUNJIN','允真'];
 const prefixs_LALISA = ['Lalisa','LALISA','lalisa','lisa','LISA'];
 const querys = ['cute','funny','smile','happy','angry'];
 
@@ -39,6 +40,10 @@ client.on('messageCreate', async message => {
     if(prefixs_LALISA.some(prefix4 => message.content.includes(prefix4))){
         second = new Date().getSeconds();
         await message.reply(await randomPhotos.getGif('lalisa '+querys[second % querys.length]));
+    }
+    if(prefix_yunjin.some(prefix5 => message.content.includes(prefix5))){
+        second = new Date().getSeconds();
+        await message.reply(await randomPhotos.getGif('yunjin '+querys[second % querys.length]));
     }
     return;
 });
