@@ -24,20 +24,17 @@ client.on('messageCreate', async message => {
 
     if(prefixs_IU.some(prefix => message.content.includes(prefix))){ 
         await message.reply(await randomPhotos.getGif('iu cute funny'));
-        return;
     }
     if(prefix_yuri.some(prefix => message.content.includes(prefix))){
         await message.reply(await randomPhotos.getGif('joyuri cute funny'));
-        return;
     }
     if(prefix_chaewon.some(prefix => message.content.includes(prefix))){
         await message.reply(await randomPhotos.getGif('chaewon cute funny'));
-        return;
     }
     if(prefixs_LALISA.some(prefix => message.content.includes(prefix))){
         await message.reply(await randomPhotos.getGif('lalisa cute funny'));
-        return;
     }
+    return;
 });
 
 client.login(process.env.TOKEN);
